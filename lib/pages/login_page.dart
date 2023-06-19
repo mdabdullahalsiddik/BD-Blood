@@ -1,0 +1,152 @@
+// ignore_for_file: override_on_non_overriding_member
+
+import 'package:bd_blood/pages/donor_home_page.dart';
+import 'package:bd_blood/static/all_color.dart';
+import 'package:bd_blood/static/all_icon.dart';
+import 'package:bd_blood/static/all_text.dart';
+
+import 'package:flutter/material.dart';
+
+import 'package:get_storage/get_storage.dart';
+
+import '../pages/singup_page.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController mailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  final storage = GetStorage();
+
+  bool get signedIn => storage.hasData('login');
+
+  void _logIn() {
+    setState(() {
+      storage.write('login', mailController.text);
+      mailController.clear();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: signedIn ? login1() : DonorHome()),
+    );
+  }
+
+  @override
+  Widget login1() {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 50.0),
+        child: Container(
+          width: MediaQuery.sizeOf(context).width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage("assets/images/siddik.jpg"),
+              ),
+              SizedBox(height: 10.0),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
+                child: Row(
+                  children: [AllText.mail_Text],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                child: TextField(
+                  controller: mailController,
+                  decoration: InputDecoration(
+                    hintText: "flutter@gmail.com",
+                    labelText: "Mail",
+                    hintStyle: TextStyle(color: AllColor.blackColor),
+                    labelStyle: TextStyle(color: AllColor.blackColor),
+                    prefixIcon: AllIcon.mailIcon,
+                    suffix: AllIcon.keyboard_Icon,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AllColor.blackColor),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AllColor.orangeColor)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
+                child: Row(
+                  children: [AllText.password_Text],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
+                child: TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    hintText: "!@#%^*123456789",
+                    labelText: "Password",
+                    hintStyle: TextStyle(color: AllColor.blackColor),
+                    labelStyle: TextStyle(color: AllColor.blackColor),
+                    prefixIcon: AllIcon.passwordIcon,
+                    suffixIcon: AllIcon.eyeIcon,
+                    suffix: AllIcon.keyboard_Icon,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AllColor.blackColor),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AllColor.orangeColor)),
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+                    child: InkWell(
+                      onTap: _logIn,
+                      child: SizedBox(
+                        height: 50.0,
+                        width: 330.0,
+                        child: Card(
+                          color: AllColor.orangeColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Center(child: AllText.login_Text),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                                builder: (context) => SingupPage()));
+                      },
+                      child: AllText.singupText),
+                  Text("/"),
+                  TextButton(onPressed: () {}, child: AllText.forgetText)
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
