@@ -6,9 +6,9 @@ class AllIcon {
     Icons.mail_outline,
     color: AllColor.blackColor,
   );
-  static final keyboard_Icon = Icon(
+  static final keyboardIcon = Icon(
     Icons.keyboard,
-    color: AllColor.orangeColor,
+    color: AllColor.red_Color,
   );
   static final eyeIcon = Icon(
     Icons.remove_red_eye_outlined,
@@ -44,6 +44,41 @@ class AllIcon {
   );
   static final circleIcon = Icon(
     Icons.circle,
-    size: 10,color: AllColor.blackColor,
+    size: 10,
+    color: AllColor.blackColor,
+  );
+  static final cmeraIcon = Icon(
+    Icons.camera_alt_outlined,
+    color: AllColor.blackColor,
+  );
+  static final photoIcon = Icon(
+    Icons.photo,
+    color: AllColor.blackColor,
+  );
+
+  static final homeBarIcon = Icons.home;
+  static final mailBArIcon = Icons.mail;
+  static final listIcon = Icons.list_alt;
+  static final listBarIcon = Icons.list_alt;
+  static final accountBArIcon = Icons.account_circle_outlined;
+  static final logoutIcon = Icon(
+    Icons.logout,
+    color: AllColor.blackColor,
+  );
+   static final menuIcon = Icon(
+    Icons.menu,
+    color: AllColor.blackColor,
+  );
+  static final moreIcon = Icon(Icons.more_vert_rounded,
+    color: AllColor.blackColor,
+  );
+  static final profileIcon = Icon(Icons.account_circle_outlined,
+    color: AllColor.blackColor,
+  );
+   static final starIcon = Icon(Icons.star_border,
+    color: AllColor.blackColor,
+  );
+  static final editIcon = Icon(Icons.edit,
+    color: AllColor.blackColor,
   );
 }

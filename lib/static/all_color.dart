@@ -4,5 +4,5 @@ class AllColor {
   static final blackColor = Colors.black;
   static final redColor = Colors.red;
   static final blueColor = Colors.blue;
-  static final orangeColor = Colors.orange;
+  static final red_Color = Colors.redAccent.shade400;
 }
