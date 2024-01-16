@@ -4,8 +4,8 @@ import 'package:bd_blood/static/all_color.dart';
 import 'package:bd_blood/static/all_icon.dart';
 import 'package:bd_blood/static/all_text.dart';
 import 'package:flutter/material.dart';
-import '../pages/singup_page.dart';
-import 'receiver_pages/receiver_home.dart';
+import 'singup_page.dart';
+import '../receiver_pages/receiver_home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
